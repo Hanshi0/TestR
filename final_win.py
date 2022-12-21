@@ -6,7 +6,6 @@ class Thirdwin(QWidget):
     def __init__(self, exp):
         super().__init__()
         self.exp = exp
-        self.index 
         self.set_appear()
         self.initUI()
         self.result()
@@ -16,10 +15,14 @@ class Thirdwin(QWidget):
         self.resize(win_width, win_height)
         self.move(win_x, win_y)
     def initUI(self):
-        self.work_text = QLabel(txt_workheart)
-        self.index_text = QLabel(txt_index)
+        self.work_text = QLabel(txt_workheart + self.result())
+        self.index_text = QLabel(txt_index + str(self.index))
+        self.line = QVBoxLayout()
+        self.line.addWidget(self.index_text)
+        self.line.addWidget(self.work_text)
+        self.setLayout(self.line)
     def result(self):
-        self.index = (4*(int(self.exp.t1)+int(self.exp.t2)+int(self.exp.t3))-200)/10
+        self.index = (4*(self.exp.t1+self.exp.t2+self.exp.t3)-200)/10
         if self.exp.age >= 15:
             if self.index >= 15:
                 return txt_res1
@@ -29,7 +32,7 @@ class Thirdwin(QWidget):
                 return txt_res3
             elif self.index >=0.5 and self.index < 6:
                 return txt_res4
-            elif self.index < 0.5
+            elif self.index < 0.5:
                 return txt_res5
         elif self.exp.age < 15 and self.exp.age >= 13:
             if self.index >= 16.5:
@@ -75,6 +78,5 @@ class Thirdwin(QWidget):
                 return txt_res4
             elif self.index < 6.5:
                 return txt_res5
-            
-        
-        
+            else:
+                return 'такой возраст не обрабатывается'

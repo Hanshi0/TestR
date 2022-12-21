@@ -28,12 +28,7 @@ class Mainwin(QWidget):
         self.btn.clicked.connect(self.next_click)
     def next_click(self):
         self.hide()
-        self.sw = second_win()
+        self.sw = Second_win()
 app = QApplication([])
 main_win = Mainwin()
 app.exec_()
-
-    
-
-
-

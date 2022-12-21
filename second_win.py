@@ -127,10 +127,5 @@ class Second_win(QWidget):
 
     def next_click(self):
         self.hide()
-        exp=Experiment(self.age_line, self.test1_line, self.test2_line, self.test3_line)
+        exp=Experiment(int(self.age_line.text()), int(self.test1_line.text()), int(self.test2_line.text()), int(self.test3_line.text()))
         self.fw = Thirdwin(exp)
-
-app=QApplication([])
-screen2=Second_win()
-app.exec_()
-
